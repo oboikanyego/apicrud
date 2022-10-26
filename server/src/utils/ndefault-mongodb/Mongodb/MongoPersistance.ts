@@ -226,6 +226,7 @@ export class MongoPersistance {
                     var bucketOptions = { 'bucketName': entity };
                     var bucket = new mongodb.GridFSBucket(dsRef.db(), bucketOptions);
                     var cursor = bucket.find(filter);
+
                     cursor.toArray((error, docs) => {
                         if (error) {
                             return reject(error);
