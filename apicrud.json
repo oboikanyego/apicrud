@@ -1,0 +1,13 @@
+{
+    "displayName": "ApiCrud",
+    "appName": "apicrud",
+    "description": "Api Crud operations",
+    "lastModified": "2022-10-25T09:47:24.874Z",
+    "imgSourcePath": "",
+    "version": "1.0.0",
+    "appType": "apiOnly",
+    "templateName": "blank",
+    "createDate": "2022-10-25T09:47:24.465Z",
+    "analyticsId": "dead8999-0af2-7c8a-dacf-55a8e4574ca0",
+    "createdStudioVersion": "8.1.1"
+}

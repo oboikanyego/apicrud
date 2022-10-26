@@ -1,0 +1,120 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_VttdIH7MnH1ebMoL",
+        "type": "tab",
+        "createdDate": "2022-10-25T12:02:17.874Z",
+        "label": "middleware",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "middleware",
+        "relativeParentPath": "middleware"
+    },
+    {
+        "id": "sd_dcVKkfzEWldR1nGh",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_VttdIH7MnH1ebMoL",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "// const util = require(\"util\");\n// const multer = require(\"multer\");\n// const { GridFsStorage } = require(\"multer-gridfs-storage\");\n// const dbConfig = require(\"../config/db\");\n\n// var storage = new GridFsStorage({\n//   url: dbConfig.url + dbConfig.database,\n//   options: { useNewUrlParser: true, useUnifiedTopology: true },\n//   file: (req, file) => {\n//     const match = [\"image/png\", \"image/jpeg\"];\n\n//     if (match.indexOf(file.mimetype) === -1) {\n//       const filename = `${Date.now()}-BK-${file.originalname}`;\n//       return filename;\n//     }\n\n//     return {\n//       bucketName: dbConfig.imgBucket,\n//       filename: `${Date.now()}-BK-${file.originalname}`\n//     };\n//   }\n// });\n\n// var uploadFiles = multer({ storage: storage }).single(\"file\");\n// var uploadFilesMiddleware = util.promisify(uploadFiles);\n// module.exports = uploadFilesMiddleware;",
+        "functionName": "sd_dcVKkfzEWldR1nGh",
+        "category": "Function",
+        "x": 245,
+        "y": 60,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "generated": true
+    },
+    {
+        "id": "sd_TWQcPCunD7OIZ7Zx",
+        "type": "MiddlewareEnd",
+        "z": "SSD_SERVICE_ID_sd_VttdIH7MnH1ebMoL",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "str",
+            "value": "got here",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "num",
+            "value": 200,
+            "ssd_typedInputField": true
+        },
+        "responseType": "txt",
+        "responseMapping": {
+            "status": {
+                "type": "num",
+                "value": 200,
+                "ssd_typedInputField": true
+            },
+            "txt": {
+                "type": "str",
+                "value": "got here",
+                "ssd_typedInputField": true
+            },
+            "send": {
+                "type": "str",
+                "value": "got here",
+                "ssd_typedInputField": true
+            }
+        },
+        "inputs": 1,
+        "outputs": 0,
+        "editableListData": {
+            "headers": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_TWQcPCunD7OIZ7Zx",
+        "category": "HTTP",
+        "x": 365,
+        "y": 60,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_07aHpkXJJbVMAfP8",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_VttdIH7MnH1ebMoL",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "check",
+        "outputs": 1,
+        "inputVariables": [
+            {
+                "key": "file",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
+        "localVariables": [],
+        "accept_bh": false,
+        "functionName": "check",
+        "category": "General",
+        "x": 105,
+        "y": 60,
+        "wires": [
+            [
+                "sd_dcVKkfzEWldR1nGh"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "middleware"
+    }
+]
