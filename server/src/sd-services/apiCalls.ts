@@ -423,7 +423,7 @@ export class apiCalls {
             res,
             next
           );
-          bh = await this.getImageScript(bh);
+          bh = await this.copyOfTheFirstNode(bh);
           //appendnew_next_sd_0VOGk5c2VVKdehBn
         } catch (e) {
           return await this.errorHandler(bh, e, 'sd_0VOGk5c2VVKdehBn');
@@ -503,6 +503,110 @@ export class apiCalls {
           //appendnew_next_sd_MJ8cfO2dRHx1hmQa
         } catch (e) {
           return await this.errorHandler(bh, e, 'sd_MJ8cfO2dRHx1hmQa');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
+
+    if (!this.swaggerDocument['paths']['/Downloadpdf/{pdf}']) {
+      this.swaggerDocument['paths']['/Downloadpdf/{pdf}'] = {
+        get: {
+          summary: 'Uploading files',
+          description: 'Uploading files(images ,docs and pdf)',
+          consumes: [],
+          produces: [],
+          parameters: [],
+          responses: {},
+        },
+      };
+    } else {
+      this.swaggerDocument['paths']['/Downloadpdf/{pdf}']['get'] = {
+        summary: 'Uploading files',
+        description: 'Uploading files(images ,docs and pdf)',
+        consumes: [],
+        produces: [],
+        parameters: [],
+        responses: {},
+      };
+    }
+    this.app['get'](
+      `${this.serviceBasePath}/Downloadpdf/:pdf`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          bh = await this.getpdfScript(bh);
+          //appendnew_next_sd_DwH2k0kDb0Mi9d9w
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_DwH2k0kDb0Mi9d9w');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
+
+    if (!this.swaggerDocument['paths']['/GetImageByFilename/{image}']) {
+      this.swaggerDocument['paths']['/GetImageByFilename/{image}'] = {
+        get: {
+          summary: 'Uploading files',
+          description: 'Uploading files(images ,docs and pdf)',
+          consumes: [],
+          produces: [],
+          parameters: [],
+          responses: {},
+        },
+      };
+    } else {
+      this.swaggerDocument['paths']['/GetImageByFilename/{image}']['get'] = {
+        summary: 'Uploading files',
+        description: 'Uploading files(images ,docs and pdf)',
+        consumes: [],
+        produces: [],
+        parameters: [],
+        responses: {},
+      };
+    }
+    this.app['get'](
+      `${this.serviceBasePath}/GetImageByFilename/:image`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          bh = await this.getImageScript(bh);
+          //appendnew_next_sd_2jXtXBuc8JVPQ0WH
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_2jXtXBuc8JVPQ0WH');
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
@@ -718,12 +822,161 @@ export class apiCalls {
     }
   }
 
-  async getImageScript(bh) {
+  async copyOfTheFirstNode(bh) {
     try {
       bh.local.query = { filename: bh.input.params.image };
       // bh.res ={result:"Success"}
       // bh.image =bh.input.files.image[0]
       console.log('bh 22222222222222:', bh.input.params);
+      // console.log("bh 22222222222222:",bh)bh.input.files.filename bh.input.files.path
+      bh = await this.sd_QGrVRKD979sVaG4r(bh);
+      //appendnew_next_copyOfTheFirstNode
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_3r3vicxtIRjMVK5B');
+    }
+  }
+
+  async sd_QGrVRKD979sVaG4r(bh) {
+    try {
+      bh.res = await MongoPersistance.getInstance().downloadFile(
+        'sd_WsvhA7vgJzLYY1Ap',
+        'Images',
+        bh.local.query,
+        bh.metadata
+      );
+      bh = await this.sd_UiuKGqeilZlduKHK(bh);
+      //appendnew_next_sd_QGrVRKD979sVaG4r
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_QGrVRKD979sVaG4r');
+    }
+  }
+
+  async sd_UiuKGqeilZlduKHK(bh) {
+    try {
+      console.log('afterGetting data :', bh.res);
+      bh.res = bh.res.downloadStream;
+      console.log('afterGetting data :', bh.res);
+      await this.sd_vVnAlpSYL35X4CAg(bh);
+      //appendnew_next_sd_UiuKGqeilZlduKHK
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_UiuKGqeilZlduKHK');
+    }
+  }
+
+  async sd_vVnAlpSYL35X4CAg(bh) {
+    try {
+      bh.res.pipe(bh.web.res);
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_vVnAlpSYL35X4CAg');
+    }
+  }
+
+  async uploadpdfScript(bh) {
+    try {
+      // bh.local.query ={ "name" : bh.input.params.name} .input.files.image[0]
+      console.log('bh 22222222222222:', bh.input.files);
+      bh.res = { result: 'Success' };
+      bh.pdf = bh.input.files.pdf[0];
+      // bh.image =bh.input.files.image[0]
+      // console.log("bh 22222222222222:",bh)bh.input.files.filename bh.input.files.path
+      bh = await this.sd_PCHFftGqkwcf0tKQ(bh);
+      //appendnew_next_uploadpdfScript
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_0gDmKmZg4uwvGqHe');
+    }
+  }
+
+  async sd_PCHFftGqkwcf0tKQ(bh) {
+    try {
+      bh.res = await MongoPersistance.getInstance().uploadFile(
+        'sd_WsvhA7vgJzLYY1Ap',
+        'pdfUploads',
+        bh.pdf.path,
+        bh.pdf.filename,
+        {}
+      );
+      await this.sd_iaPdQPkyY32xLbah(bh);
+      //appendnew_next_sd_PCHFftGqkwcf0tKQ
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_PCHFftGqkwcf0tKQ');
+    }
+  }
+
+  async sd_iaPdQPkyY32xLbah(bh) {
+    try {
+      bh.web.res.status(200).send('{"response ":"Uploaded Succefully"}');
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_iaPdQPkyY32xLbah');
+    }
+  }
+
+  async getpdfScript(bh) {
+    try {
+      bh.local.query = { filename: bh.input.params.pdf };
+      // bh.res ={result:"Success"}
+      // bh.image =bh.input.files.image[0]
+      console.log('bh 22222222222222:', bh.input.params);
+      // console.log("bh 22222222222222:",bh)bh.input.files.filename bh.input.files.path
+      bh = await this.sd_ffDvJkUrviLxyJ8C(bh);
+      //appendnew_next_getpdfScript
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_5Dre0VAFaWHwV7N1');
+    }
+  }
+
+  async sd_ffDvJkUrviLxyJ8C(bh) {
+    try {
+      bh.res = await MongoPersistance.getInstance().downloadFile(
+        'sd_WsvhA7vgJzLYY1Ap',
+        'pdfUploads',
+        bh.local.query,
+        bh.metadata
+      );
+      bh = await this.afterGettingdatapdf(bh);
+      //appendnew_next_sd_ffDvJkUrviLxyJ8C
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_ffDvJkUrviLxyJ8C');
+    }
+  }
+
+  async afterGettingdatapdf(bh) {
+    try {
+      console.log('afterGetting data :', bh.res);
+      bh.res = bh.res.downloadStream;
+      console.log('afterGetting data :', bh.res);
+      await this.sd_NKKCyjwsfYJzOiHI(bh);
+      //appendnew_next_afterGettingdatapdf
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_oS08jxTB8uNxRvGw');
+    }
+  }
+
+  async sd_NKKCyjwsfYJzOiHI(bh) {
+    try {
+      bh.res.pipe(bh.web.res);
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_NKKCyjwsfYJzOiHI');
+    }
+  }
+
+  async getImageScript(bh) {
+    try {
+      bh.local.query = { filename: bh.input.params.image };
+      // bh.res ={result:"Success"}
+      // bh.image =bh.input.files.image[0]
+      console.log('bh 22222222222222:', bh);
       // console.log("bh 22222222222222:",bh)bh.input.files.filename bh.input.files.path
       bh = await this.sd_G09SNnNkmc0UvGwe(bh);
       //appendnew_next_getImageScript
@@ -735,9 +988,9 @@ export class apiCalls {
 
   async sd_G09SNnNkmc0UvGwe(bh) {
     try {
-      bh.res = await MongoPersistance.getInstance().downloadFile(
+      bh.res = await MongoPersistance.getInstance().find(
         'sd_WsvhA7vgJzLYY1Ap',
-        'Images',
+        'Images.files',
         bh.local.query,
         bh.metadata
       );
@@ -751,9 +1004,10 @@ export class apiCalls {
 
   async afterGettingData(bh) {
     try {
+      // console.log("afterGetting data :",bh.res)
+      // bh.res = bh.res.downloadStream;
       console.log('afterGetting data :', bh.res);
-      bh.res = bh.res.downloadStream;
-      console.log('afterGetting data :', bh.res);
+      // bh.res = bh.res[0]
       await this.sd_NNVa4QHzoz7S3OX0(bh);
       //appendnew_next_afterGettingData
       return bh;
@@ -764,35 +1018,11 @@ export class apiCalls {
 
   async sd_NNVa4QHzoz7S3OX0(bh) {
     try {
-      bh.res.pipe(bh.web.res);
+      bh.web.res.status(200).send(bh.res);
+
       return bh;
     } catch (e) {
       return await this.errorHandler(bh, e, 'sd_NNVa4QHzoz7S3OX0');
-    }
-  }
-
-  async uploadpdfScript(bh) {
-    try {
-      // bh.local.query ={ "name" : bh.input.params.name} .input.files.image[0]
-      console.log('bh 22222222222222:', bh);
-      bh.res = { result: 'Success' };
-      // bh.image =bh.input.files.image[0]
-      // console.log("bh 22222222222222:",bh)bh.input.files.filename bh.input.files.path
-      await this.sd_iaPdQPkyY32xLbah(bh);
-      //appendnew_next_uploadpdfScript
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_0gDmKmZg4uwvGqHe');
-    }
-  }
-
-  async sd_iaPdQPkyY32xLbah(bh) {
-    try {
-      bh.web.res.status(200).send('{"response ":"Uploaded Succefully"}');
-
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_iaPdQPkyY32xLbah');
     }
   }
 
